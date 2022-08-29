@@ -11,7 +11,7 @@ input('\n\nНажмите Enter, чтобы выйти.')
 
 # Вывод имени
 
-print('Nikolai')
+print('Nikolai Nikitenok')
 input('\n\nНажмите Enter, чтобы выйти.')
 
 # Вывод афоризмов
