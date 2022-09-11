@@ -14,7 +14,8 @@ while attempts > 0 and guess != number:
     attempts -= 1
     print('Your attempts: ', attempts)
 
-if attempts == 0:
+if attempts < 0:
     print('Game Over!!!')
 else:
     print('You are WINNER!!!!')
+50
