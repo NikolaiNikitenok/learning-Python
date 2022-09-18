@@ -44,10 +44,10 @@ while choice != "0":
         if score in scores:
             scores.remove(score)
         else:
-            print("Результат". score, "не содержится в списке рекордов.")
+            print("Результат", score, "не содержится в списке рекордов.")
 
     # Сортировка рекордов
-    
+
     elif choice == "4":
         score.sort(reverse=True)
 
