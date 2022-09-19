@@ -49,7 +49,7 @@ while choice != "0":
     # Сортировка рекордов
 
     elif choice == "4":
-        score.sort(reverse=True)
+        scores.sort(reverse=True)
 
     # непонятный пользовательский ввод
 
