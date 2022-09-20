@@ -9,8 +9,8 @@ skills = {
     "Dexterity": 0
 }
 
-# for i in skills.items():
-#     print(i)
+for i, j in skills.items():
+    print(i, j)
 
 # Добавляем кол-во очков
 
