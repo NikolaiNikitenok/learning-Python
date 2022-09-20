@@ -189,4 +189,3 @@ while choice != "0":
                 quantity -= points_minus
                 skills["Wisdom"] = quantity
                 points += points_minus
-1
