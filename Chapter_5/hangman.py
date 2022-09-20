@@ -139,9 +139,18 @@ while choice != "0":
             """)
         language = input("Ваш выбор: ")
         if language == "1":
-            WORDS = ("СТОЛ", "СТУЛ", "КАБИНЕТ", "КОМПЬЮТЕР")
+            WORDS = ("СТОЛ",
+                     "СТУЛ",
+                     "КАБИНЕТ",
+                     "КОМПЬЮТЕР",
+                     "ТЕТРАДЬ",
+                     "ВИСЕЛИЦА")
         else:
-            WORDS = ("PYTHON", "GITHUB", "COMPUTER", "PHONE", "HANGMAN")
+            WORDS = ("PYTHON",
+                     "GITHUB",
+                     "COMPUTER",
+                     "PHONE",
+                     "HANGMAN")
 
     elif choice == "0":
         print("До свидания!")
