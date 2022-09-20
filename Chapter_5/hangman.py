@@ -110,7 +110,35 @@ HANGMAN = (
 
 MAX_WRONG = len(HANGMAN) - 1
 
-WORDS = ("PYTHON", "GITHUB", "COMPUTER", "PHONE", "HANGMAN")
+choice = None
+
+print(
+    """
+    0 - Выход
+    1 = Выбор языка
+    """
+)
+
+while choice != "0":
+    choice = input("\nВыберете один из вариантов: ")
+    if choice == "1":
+        print("Выберете один из языков:")
+        print(
+        """1
+        
+        1 - RUS
+        2 - ENG
+        """
+        )
+        language = input("Ваш выбор: ")
+        if language == "1":
+            WORDS = ("СТОЛ", "СТУЛ", "КАБИНЕТ", "КОМПЬЮТЕР")
+        else:
+            WORDS = ("PYTHON", "GITHUB", "COMPUTER", "PHONE", "HANGMAN")
+
+    elif choice == "0":
+        print("До свидания!")
+    break
 
 # Инициализация переменных
 
@@ -156,4 +184,5 @@ else:
     print("nВы отгадали!")
 print("\nБыло загадано слово:", word)
 
-input("\n\nНажмите Enter, чтобы выйти.")
+input("\n\n1"
+      "Нажмите Enter, чтобы выйти.")
