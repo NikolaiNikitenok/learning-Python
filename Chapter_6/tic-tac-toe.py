@@ -1,6 +1,8 @@
 # Крестики-нолики
 # Компьютер играет в крестики-нолики против пользователя
 
+from comb import MAYBE_WIN
+
 # Глобальные константы
 
 X = "X"
@@ -38,7 +40,7 @@ def ask_yes_no(question):
     return response
 
 
-def ask_number(question, low, high, step = 1):
+def ask_number(question, low, high, step=1):
     """Просит ввести число из диапазона."""
     response = None
     while response not in range(low, high, step):
@@ -123,6 +125,29 @@ def human_move(board, human):
 
 def computer_move(board, computer, human):
     """Делаем ход за компьютерного противника."""
+
+    MAYBE_WIN = (
+        (0, 1),
+        (1, 2),
+        (3, 4),
+        (4, 5),
+        (6, 7),
+        (7, 8),
+        (0, 3),
+        (3, 6),
+        (1, 4),
+        (4, 7),
+        (2, 5),
+        (5, 8),
+        (0, 4),
+        (4, 8),
+        (2, 4),
+        (4, 6),
+    )
+    # Если на доске есть комбинации с 1 ходом до победы у human, то найти в какой комбинации row есть комбинации из MAYBE_WIN и взять остаток этот
+    for row in MAYBE_WIN:
+        if board[row[0]] == board[row[1]] == human != EMPTY:
+            print("Один ход до победы!")
     # создадим рабочую копию доски, потому что функция будет менять некоторые значения в списке
     board = board[:]
 
@@ -154,7 +179,7 @@ def computer_move(board, computer, human):
 
 
 def next_turn(turn):
-    """Осуществляет переход кода."""
+    """Осуществляет переход хода."""
     if turn == X:
         return O
     else:
