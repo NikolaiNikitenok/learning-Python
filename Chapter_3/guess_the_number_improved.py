@@ -18,4 +18,3 @@ if attempts < 0:
     print('Game Over!!!')
 else:
     print('You are WINNER!!!!')
-50
