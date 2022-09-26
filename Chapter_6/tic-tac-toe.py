@@ -144,9 +144,10 @@ def computer_move(board, computer, human):
     )
     # Если на доске есть комбинации с 1 ходом до победы у human, то найти в какой комбинации row есть комбинации из
     # MAYBE_WIN и взять остаток этот
-    for row in MAYBE_WIN:
-        if board[row[0]] == board[row[1]] == human != EMPTY:
-            print("Один ход до победы!")
+
+    # for row in MAYBE_WIN:
+    #     if board[row[0]] == board[row[1]] == human != EMPTY:
+    #         print("Один ход до победы!")
 
     # создадим рабочую копию доски, потому что функция будет менять некоторые значения в списке
     board = board[:]
@@ -162,6 +163,19 @@ def computer_move(board, computer, human):
         # если следующим ходом может победить компьютер, выберем этот ход
 
         if winner(board) == computer:
+            print(move)
+            return move
+
+        # выполнив проверку, отменим внесенные изменения
+
+        board[move] = EMPTY
+
+    for move in legal_moves(board):
+        board[move] = human
+
+        # если следующим ходом может победить компьютер, выберем этот ход
+
+        if winner(board) == human:
             print(move)
             return move
 
