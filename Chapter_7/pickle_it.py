@@ -28,9 +28,27 @@ def reading():
     f.close()
 
 
+def shelving():
+    print("\nПомещение списков на полку.")
+    s = shelve.open("pickles2.dat")
+    s["variety"] = ["Огурцы", "Помидоры", "Капуста"]
+    s["shape"] = ["Целые", "Кубиками", "Соломкой"]
+    s["brand"] = ["Главпродукт", "Чумак", "Бондюэль"]
+    s.sync()  # Убедимся, что данные записаны
+
+    # Извлечение
+    print("\nИзвлечение списков из файлов полки.")
+    print("Торговые марки -", s["brand"])
+    print("Формы -", s["shape"])
+    print("Виды овощей -", s["variety"])
+    s.close()
+    input("Please Enter.")
+
+
 def main():
     conserve()
     reading()
+    shelving()
 
 
 if __name__ == '__main__':
