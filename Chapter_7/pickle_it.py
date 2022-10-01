@@ -2,7 +2,8 @@
 
 # Демонстрирует консервацию данных и доступ к ним через интерфейс полки
 
-import pickle, shelve
+import pickle
+import shelve
 
 
 def conserve():

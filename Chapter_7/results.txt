@@ -1,0 +1,5 @@
+Nikolai	30
+Коля	20
+Nikolai	30
+Kolya	10
+Nikolai	60
