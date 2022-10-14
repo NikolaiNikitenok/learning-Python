@@ -1,16 +1,20 @@
 # Классово верная зверюшка
+
 # Демонстрирует атрибуты класса и статические методы
 
 class Critter(object):
     """Виртуальный питомец"""
     total = 0
+
     @staticmethod
     def status():
         print("\nВсего зверюшек сейчас", Critter.total)
+
     def __init__(self, name):
         print("Появилась на свет новая зверюшка!")
         self.name = name
         Critter.total += 1
+
 
 # Основная часть
 
