@@ -9,6 +9,11 @@ class Critter(object):
         self.hunger = hunger
         self.boredom = boredom
 
+    def __str__(self):
+        stat = f"Голод: {self.hunger} \n"
+        stat += f"Настроение: {self.boredom} \n"
+        return stat
+
     def __pass_time(self):
         self.hunger += 1
         self.boredom += 1
@@ -80,6 +85,10 @@ def main():
         elif choice == "3":
             fun = int(input("Введите кол-во времени, которое поиграете со зверюшкой (от 1 до 4 минут): "))
             crit.play(fun)
+
+        # Черных ход - проверка хар-ик
+        elif choice == "admin":
+            print(crit)
 
         # Непонятный пользовательский ввод
         else:
