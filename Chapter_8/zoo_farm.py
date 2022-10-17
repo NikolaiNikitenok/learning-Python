@@ -12,17 +12,16 @@ class Critter(object):
 
     critter_list = []
 
-    def __init__(self, name, breed, hunger=0, boredom=0):
+    def __init__(self, name, breed, hunger, boredom):
         self.name = name
         self.hunger = hunger
         self.boredom = boredom
         self.breed = breed
         Critter.total += 1
-        Critter.critter_list.append(self.name)
+        # Critter.critter_list.append(self.name)
 
-    def delik(self):
-        """Удаление зверюшки"""
-
+    def talk(self, name):
+        print(f"Меня зовут {name}. Я чувствую себя: {self.mood}")
 
     def __str__(self):
         stat = f"\nName: {self.name}, \nHunger: {self.hunger}, \nBoredom: {self.boredom}, \nПорода: {self.breed}"
@@ -30,12 +29,44 @@ class Critter(object):
 
     @staticmethod
     def status():
-        print(f"\nВсего зверюшек в вашем зоопарке: {Critter.total}")
-        print(f"\nВот список зверюшек: {Critter.critter_list}")
+        print(f"\nВсего зверюшек в вашем зоопарке было: {Critter.total}")
+        # print(f"\nВот список зверюшек: {Critter.critter_list}")
 
+    @property
+    def mood(self):
+        unhappiness = self.hunger + self.boredom
+        if unhappiness < 5:
+            m = "Прекрасно"
+        elif 6 <= unhappiness <= 10:
+            m = "Неплохо"
+        elif 11 <= unhappiness <= 15:
+            m = "Не сказать, что хорошо"
+        elif unhappiness >= 16:
+            m = "Ужасно!"
+        return m
+
+    def eat(self, food):
+        print("Ммм... Вкусно!")
+        self.hunger -= food
+        if self.hunger <= 0:
+            self.hunger = 0
+        self.__pass_time()
+
+    def play(self, time):
+        print("Ммм... Вкусно!")
+        self.boredom -= time
+        if self.boredom <= 0:
+            self.boredom = 0
+        self.__pass_time()
+
+    def __pass_time(self):
+        self.hunger += 1
+        self.boredom += 1
 
 def main():
     choice = None
+    zoo = []
+    zoo_mood = []
 
     print(
         """
@@ -45,6 +76,13 @@ def main():
 
     while choice != "0":
         Critter.status()
+
+        # Список с именами зверюшек
+        print("Список зверей, находящихся в зоопарке: ")
+        for n in zoo:
+            print(n)
+
+
         print(
             """
             Вы можете выбрать действие:
@@ -63,6 +101,7 @@ def main():
         elif choice == "1":
             choice_edit = None
             Critter.status()
+
             print(
                 """
                 Можете выбрать:
@@ -76,15 +115,41 @@ def main():
                 choice_edit = input("Ваш выбор: ")
 
                 if choice_edit == "0":
-                    "Вы вернулись в главное меню!"
+                    print("Вы вернулись в главное меню!")
 
                 elif choice_edit == "1":
                     print("Вы выбрали добавить зверюшку!")
 
-                    crit = Critter(input("Введите имя зверюшки: "), input("Введите породу зверюшки: "))
-                    print(crit)
+                    crit = Critter(input("Введите имя зверюшки: "), input("Введите породу зверюшки: "),\
+                                   random.randint(0, 5), random.randint(0, 5))
+                    zoo.append(crit.name)
+                    zoo_mood.append(crit)
+
+                    print("Вывод 1 элемента: ", zoo[0])
 
                     Critter.status()
+
+                elif choice_edit == "2":
+                    zver = input("Выберете зверюшку из списка, которую хотите удалить! Просто введите её имя: ")
+
+                    if zver in zoo:
+                        zoo.remove(zver)
+                        print("Вы удалили зверюшку с именем: ", zver, "!\n")
+                    else:
+                        print("Нет такого имени!")
+
+        elif choice == "2":
+            for i in zoo_objects.name:
+                Critter.talk(i)
+
+        elif choice == "3":
+            print(
+                """
+                Вы хотите накормить всех своих зверюшек в зоопарке! \n
+                """
+            )
+            food = input("Выберете кол-во еды, которое вы хотите скормить: ")
+            Critter.eat(food)
 
 
 if __name__ == '__main__':
