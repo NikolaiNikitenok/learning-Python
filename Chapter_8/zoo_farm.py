@@ -34,6 +34,7 @@ class Critter(object):
 
     @property
     def mood(self):
+        global m
         unhappiness = self.hunger + self.boredom
         if unhappiness < 5:
             m = "Прекрасно"
@@ -43,7 +44,7 @@ class Critter(object):
             m = "Не сказать, что хорошо"
         elif unhappiness >= 16:
             m = "Ужасно!"
-        return m
+        return str(m)
 
     def eat(self, food):
         print("Ммм... Вкусно!")
@@ -53,7 +54,7 @@ class Critter(object):
         self.__pass_time()
 
     def play(self, time):
-        print("Ммм... Вкусно!")
+        print("Ахахаха, как весело!")
         self.boredom -= time
         if self.boredom <= 0:
             self.boredom = 0
@@ -81,7 +82,6 @@ def main():
         print("Список зверей, находящихся в зоопарке: ")
         for n in zoo:
             print(n)
-
 
         print(
             """
@@ -138,6 +138,7 @@ def main():
                     else:
                         print("Нет такого имени!")
 
+        # Настроение зверюшек (Перебирая через цикл: если у нас больше 1 объекта нужно передать тот самый "self")
         elif choice == "2":
             for i in zoo_mood:
                 Critter.talk(i)
@@ -148,8 +149,22 @@ def main():
                 Вы хотите накормить всех своих зверюшек в зоопарке! \n
                 """
             )
-            food = input("Выберете кол-во еды, которое вы хотите скормить: ")
-            Critter.eat(food)
+            for i in zoo_mood:
+                food = int(input("Выберете кол-во еды, которое вы хотите скормить (1 - 4 порции): "))
+                Critter.eat(i, food)
+
+        elif choice == "4":
+            print(
+                """
+                Вы хотите поиграть со всеми зверюшками в зоопарке!
+                """
+            )
+            for i in zoo_mood:
+                Critter.play(i, int(input("Введите время, которое хотите провести cо зверюшкой: ")))
+
+        elif choice == "admin":
+            for i in zoo_mood:
+                print(f"Name: {i.name}, Hunger: {i.hunger}, Boredom: {i.boredom}")
 
 
 if __name__ == '__main__':
