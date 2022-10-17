@@ -20,8 +20,8 @@ class Critter(object):
         Critter.total += 1
         # Critter.critter_list.append(self.name)
 
-    def talk(self, name):
-        print(f"Меня зовут {name}. Я чувствую себя: {self.mood}")
+    def talk(self):
+        print(f"Меня зовут {self.name}. Я чувствую себя: {self.mood}")
 
     def __str__(self):
         stat = f"\nName: {self.name}, \nHunger: {self.hunger}, \nBoredom: {self.boredom}, \nПорода: {self.breed}"
@@ -139,7 +139,7 @@ def main():
                         print("Нет такого имени!")
 
         elif choice == "2":
-            for i in zoo_objects.name:
+            for i in zoo_mood:
                 Critter.talk(i)
 
         elif choice == "3":
