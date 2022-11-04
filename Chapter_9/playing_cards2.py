@@ -1,7 +1,7 @@
 # Карты 2.0
 # Демонстрирует расширение класса через наследование
 
-class Card(object):
+class Card():
     """ Одна игральная карта. """
     RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     SUITS = ["Трефы", "Бубны", "Червы", "Пики"]
@@ -15,7 +15,7 @@ class Card(object):
         return rep
 
 
-class Hand(object):
+class Hand():
     """ 'Рука': набор карт на руках у одного игрока. """
     def __init__(self):
         self.cards = []
@@ -75,6 +75,29 @@ def main():
     print("Вот как она выглядит теперь:")
     print(deck1)
 
+    deck1.shuffle()
+    print("\nКолода перемешана.")
+    print("Вот как она выглядит сейчас:")
+    print(deck1)
+
+    my_hand = Hand()
+    your_hand = Hand()
+    hands = [my_hand, your_hand]
+
+    deck1.deal(hands, per_hand=5)
+    print("\n\nМне и вам на руки роздано по 5 карт.")
+    print("\nУ меня на руках:")
+    print(my_hand)
+    print("\nУ вас на руках:")
+    print(your_hand)
+    print("\nОсталось в колоде:")
+    print(deck1)
+
+    deck1.clear()
+    print("\nКолода очищена.")
+
+    print("Вот как она выглядит теперь:", deck1)
+    input("\n\nPress Enter, pls...")
 
 
 if __name__ == "__main__":

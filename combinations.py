@@ -3,6 +3,6 @@
 import itertools
 
 components = "1234567890qwertyuiopasdfghjklzxcvbnm"
-combination = list(itertools.product(components, repeat=3))
+combination = list(itertools.product(components, repeat=5))
 
 print(combination)
