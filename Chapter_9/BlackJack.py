@@ -126,7 +126,7 @@ class BJ_Game(object):
             if player.is_busted():
                 player.bust()
 
-    def play(self):
+    def play(self): 
         # Сдача всем по 2 карты
         self.deck.deal(self.players + [self.dealer], per_hand=2)
         self.dealer.flip_first_card()  # Пеервая из карт, сданных дилеру, переворачивается рубашкой вверх.
