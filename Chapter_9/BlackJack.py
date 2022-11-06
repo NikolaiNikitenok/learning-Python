@@ -14,9 +14,9 @@ class BJ_Card(cards.Card):
             v = BJ_Card.RANKS.index(self.rank) + 1
             if v > 10:
                 v = 10
-            else:
-                v = None
-            return v
+        else:
+            v = None
+        return v
 
 
 class BJ_Deck(cards.Deck):
@@ -99,7 +99,7 @@ class BJ_Dealer(BJ_Hand):
         first_card.flip()
 
 
-class BJ_Game():
+class BJ_Game(object):
     """ Игра в Блек-джек. """
     def __init__(self, names):
         self.players = []
@@ -176,9 +176,6 @@ def main():
     while again != "n":
         game.play()
         again = games.ask_yes_no("\nХотите сыграть еще раз? ")
-        main()
-    input("\n\nPress Enter...")
 
-
-if __name__ == "__main__":
-    main()
+main()
+input("\n\nPress Enter...")

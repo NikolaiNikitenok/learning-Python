@@ -1,7 +1,7 @@
 # Модуль cards
 # Набор базовых классов для карточной игры
 
-class Card():
+class Card(object):
     """ Одна игральная карта. """
     RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     SUITS = ["Трефы", "Бубны", "Червы", "Пики"]
@@ -22,7 +22,7 @@ class Card():
         self.is_face_up = not self.is_face_up
 
 
-class Hand():
+class Hand(object):
     """ 'Рука': набор карт на руках у одного игрока. """
     def __init__(self):
         self.cards = []
