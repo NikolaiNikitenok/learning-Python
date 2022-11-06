@@ -34,7 +34,7 @@ class BJ_Hand(cards.Hand):
         self.name = name
 
     def __str__(self):
-        rep = self.name + ":\t" + super.__str__()
+        rep = self.name + ":\t" + super().__str__()
         if self.total:
             rep += "(" + str(self.total) + ")"
         return rep
@@ -133,4 +133,52 @@ class BJ_Game():
         for player in self.players:
             print(player)
         print(self.dealer)
+        # Сдача дополнительных карт игрокам
+        for player in self.players:
+            self.__additional_cards(player)
+        self.dealer.flip_first_card()  # Первая карта дилера раскрывается
+        if not self.still_playing:
+            # Все игроки перебрали, покажем только "руку" дилера
+            print(self.dealer)
+        else:
+            # Сдача дополнительных карт дилеру
+            print(self.dealer)
+            self.__additional_cards(self.dealer)
+            if self.dealer.is_busted():
+                # Выигрывают все, кто еще остался в игре
+                for player in self.still_playing:
+                    player.win()
+            else:
+                # Сравниваем суммы очков у дилера и у игроков, оставшихся в игре
+                for player in self.still_playing:
+                    if player.total > self.dealer.total:
+                        player.win()
+                    elif player.total < self.dealer.total:
+                        player.lose()
+                    else:
+                        player.push()
+        # Удаление всех карт
+        for player in self.players:
+            player.clear()
+        self.dealer.clear()
 
+
+def main():
+    print("\t\tДобро пожаловать за игровой стол Блек-джека!\n")
+    names = []
+    number = games.ask_number("Сколько всего игроков? (1 - 7): ", low=1, high=8)
+    for i in range(number):
+        name = input("Введите имя игрока: ")
+        names.append(name)
+        print()
+    game = BJ_Game(names)
+    again = None
+    while again != "n":
+        game.play()
+        again = games.ask_yes_no("\nХотите сыграть еще раз? ")
+        main()
+    input("\n\nPress Enter...")
+
+
+if __name__ == "__main__":
+    main()
