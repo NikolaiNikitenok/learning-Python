@@ -49,3 +49,18 @@ class War_Player(War_Hand):
 
     def push(self):
         print(self.name, "сыграли в ничью.")
+        
+        
+class War_Game():
+    def __init__(self, names):
+        self.players = []
+        for name in names:
+            player = War_Player(name)
+            self.players.append(player)
+            
+        self.deck = War_Deck()
+        self.deck.populate()
+        self.deck.shuffle()
+        
+    def play(self):
+        self.deck.deal(self.players)

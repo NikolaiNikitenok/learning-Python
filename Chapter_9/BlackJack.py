@@ -128,7 +128,7 @@ class BJ_Game(object):
 
     def play(self): 
         # Сдача всем по 2 карты
-        self.deck.deal(self.players + [self.dealer], per_hand=2)
+        self.deck.deal(self.players + [self.dealer], per_hand=2)       
         self.dealer.flip_first_card()  # Пеервая из карт, сданных дилеру, переворачивается рубашкой вверх.
         for player in self.players:
             print(player)
