@@ -70,7 +70,7 @@ class War_Game():
         print(player)
             
 def main():
-    print("\t\tДобро пожаловать за игровой стол Блек-джека!\n")
+    print("\t\tДобро пожаловать за игровой стол!\n")
     names = []
     number = games.ask_number("Сколько всего игроков? (1 - 7): ", low=1, high=8)
     for i in range(number):
