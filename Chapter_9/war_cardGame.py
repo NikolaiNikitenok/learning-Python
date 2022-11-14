@@ -9,6 +9,8 @@ class War_Card(cards.Card):
     @property
     def value(self):
         v = War_Card.RANKS.index(self.rank) + 1
+        
+        return v
 
 
 # Создание колоды
@@ -37,7 +39,11 @@ class War_Hand(cards.Hand):
         t = 0
         for card in self.cards:
             t += card.value
+        # print(t)
         return t
+    
+    # def all_total(self):
+    #     tot = 
 
 
 class War_Player(War_Hand):
@@ -54,20 +60,40 @@ class War_Player(War_Hand):
 class War_Game():
     def __init__(self, names):
         self.players = []
+        
         for name in names:
             player = War_Player(name)
             self.players.append(player)
-            
+
         self.deck = War_Deck()
         self.deck.populate()
         self.deck.shuffle()
         
+    @property
+    def still_playing(self):
+        sp = []
+        for player in self.players:
+            sp.append(player)
+        return sp
+        
     def play(self):
-        sp = []  # Список значений на руках у всех игроков
         self.deck.deal(self.players, per_hand=1)
         for player in self.players:
-            sp.append(player.total)
-        print(player)
+            print(player)
+            
+    def winner(self, names):
+        self.all_total = []
+        
+        for name in names:
+            player_total = War_Player(name).total
+            self.all_total.append(player_total)
+            
+            print(self.all_total)
+
+        # spisok_all_points = []
+        # for hand in self.
+        
+        
             
 def main():
     print("\t\tДобро пожаловать за игровой стол!\n")
@@ -76,12 +102,11 @@ def main():
     for i in range(number):
         name = input("Введите имя игрока: ")
         names.append(name)
-        print()
+        # print(names)
     game = War_Game(names)
-    again = None
-    while again != "n":
-        game.play()
-        again = games.ask_yes_no("\nХотите сыграть еще раз? ")
+    game.play()
+    game.winner(names)
+    print(War_Player(names).total)
         
 main()
 input("\n\nPress Enter...")
