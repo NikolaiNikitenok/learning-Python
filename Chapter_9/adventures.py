@@ -6,7 +6,7 @@ class Hero():
 
 
 class Map():
-    """ Создание карты с координатами точек, в которые можно перемещаться. """
+    """ Создание карты c координатами точек, в которые можно перемещаться. """
     def __init__(self):
         self.positions = []
         
@@ -17,6 +17,11 @@ class Map():
             rep += plus
         return rep
         
+    def posit(self):
+        posit_spisok = []
+        for place in self.positions:
+            pass
+            
     def add_place(self, name, position):
         """ Добавление места на карту. """
         place = Place(name, position)
@@ -24,7 +29,7 @@ class Map():
 
 
 class Place():
-    """ Создание места с координатами, в которое можно переместиться. """
+    """ Создание места c координатами, в которое можно переместиться. """
     def __init__(self, name, position):
         self.name = name
         self.position = position
@@ -34,4 +39,30 @@ class Place():
         return rep
 
 class Game():
-    pass
+    def __init__(self, name):
+        self.player = Hero(name)
+        
+    def generate_map(self):
+        map = Map()
+        map.add_place("Place1", 1)
+        map.add_place("Place2", 3)
+        map.add_place("Place3", 2)
+        map.add_place("Place4", 7)
+        print(map)
+        map.posit()
+        # print(map.positions)
+        
+    def blizko(self):
+        pos = []
+        
+    
+    def play(self):
+        self.generate_map()
+    
+def main():
+    game = Game("Nikolai")
+    game.play()
+    
+if __name__ == "__main__":
+    main()
+    
