@@ -10,7 +10,7 @@ def merge(left, right):
 
     while len(result) < len(left) + len(right):
         if left[index_left] <= right[index_right]:
-            result.append(left[index_right])
+            result.append(left[index_left])
             index_left += 1
         else:
             result.append(right[index_right])

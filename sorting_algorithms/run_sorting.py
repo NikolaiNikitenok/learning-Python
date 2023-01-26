@@ -3,6 +3,7 @@ from timeit import repeat
 from bubble_sort import bubble_sort
 from insertion_sort import insertion_sort
 from merge_sort import merge_sort
+from quicksort import quicksort
 
 
 def run_sorting_algorithm(algorithm, array):
@@ -32,4 +33,4 @@ if __name__ == "__main__":
 
     # Call the function using the name of the sorting algorithm
     # and the array you just created
-    run_sorting_algorithm(algorithm="merge_sort", array=array)
+    run_sorting_algorithm(algorithm="quicksort", array=array)
