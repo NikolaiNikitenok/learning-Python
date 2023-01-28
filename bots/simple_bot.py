@@ -8,6 +8,8 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
+count = 0
+
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message=types.Message):
     await message.answer(f"Hi, I'm Echo BOT!\nPowered by aiogram.")
@@ -28,6 +30,12 @@ async def random_letter(message: types.Message):
 async def description(message: types.Message):
     await message.answer(DESCRIPTION)
     await message.delete()
+    
+@dp.message_handler()
+async def counter(message: types.Message):
+    global count
+    await message.answer(f'Now count = {count}!')
+    count += 1
     
 @dp.message_handler()
 async def echo_upper(message: types.Message):
