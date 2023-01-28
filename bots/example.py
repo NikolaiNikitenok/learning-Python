@@ -18,6 +18,7 @@ async def how_handler(event: types.Message):
 async def main():
     bot = Bot(token=API_TOKEN)
     print("It's started!")
+    
     try:
         disp = Dispatcher(bot=bot)
         disp.register_message_handler(start_handler, commands={"start", "restart"})
@@ -25,6 +26,7 @@ async def main():
         disp.register_message_handler(how_handler, commands="go")
         
         await disp.start_polling()
+        
     finally:
         await bot.close()
 
