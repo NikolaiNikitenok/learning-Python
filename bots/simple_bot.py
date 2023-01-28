@@ -41,11 +41,11 @@ async def counter(message: types.Message):
 @dp.message_handler()
 async def echo_upper(message: types.Message):
     
+    if "0" in message.text:
+        await message.reply(f'YES!')
+    
     if message.text.count(' ') < 1:
         await message.reply(f"WTF, WHY ONLY ONE WORD?????")
-        
-    elif "0" in message.text:
-        await meassage.reply(f'YES!')
         
     else:    
         await message.reply(message.text.upper())
