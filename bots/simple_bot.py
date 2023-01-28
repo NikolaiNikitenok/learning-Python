@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-count = 0
+count = 1
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message=types.Message):
@@ -31,10 +31,11 @@ async def description(message: types.Message):
     await message.answer(DESCRIPTION)
     await message.delete()
     
-@dp.message_handler()
+@dp.message_handler(commands=['count'])
 async def counter(message: types.Message):
     global count
     await message.answer(f'Now count = {count}!')
+    await message.delete()
     count += 1
     
 @dp.message_handler()
@@ -42,6 +43,9 @@ async def echo_upper(message: types.Message):
     
     if message.text.count(' ') < 1:
         await message.reply(f"WTF, WHY ONLY ONE WORD?????")
+        
+    elif "0" in message.text:
+        await meassage.reply(f'YES!')
         
     else:    
         await message.reply(message.text.upper())
