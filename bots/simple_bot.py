@@ -57,6 +57,9 @@ async def give_sticker(message: types.Message):
 
 @dp.message_handler()
 async def echo_upper(message: types.Message):
+
+    if message.text == "❤️":
+        await message.reply("🖤")
     
     if "0" in message.text:
         await message.reply(f'YES!')
@@ -65,7 +68,7 @@ async def echo_upper(message: types.Message):
         await message.reply(f"WTF, WHY ONLY ONE WORD?????")
         
     else:    
-        await message.reply(message.text.upper())
+        await message.reply(message.text.upper() + "❤️")
     
     
 if __name__ == '__main__':
