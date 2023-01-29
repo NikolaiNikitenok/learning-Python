@@ -14,7 +14,10 @@ kb = ReplyKeyboardMarkup(resize_keyboard=True)
 b1 = KeyboardButton("/random")
 b2 = KeyboardButton("/image")
 b3 = KeyboardButton("/count")
-kb.add(b1).insert(b2).add(b3)
+b4 = KeyboardButton("/give")
+b5 = KeyboardButton("/location")
+
+kb.add(b1).insert(b2).add(b3).insert(b4).add(b5)
 
 count = 1
 
