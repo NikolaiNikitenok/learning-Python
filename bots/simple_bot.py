@@ -75,7 +75,11 @@ async def echo_upper(message: types.Message):
         
     else:    
         await message.reply(message.text.upper() + "❤️")
-    
+
+
+@dp.message_handler(content_types=["sticker"])
+async def send_sticker_id(message: types.Message):
+    await message.reply(message.sticker.file_id)
     
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
