@@ -57,7 +57,12 @@ async def give_sticker(message: types.Message):
 
 @dp.message_handler(commands=["image"])
 async def send_image(message: types.Message):
-    await bot.send_photo(chat_id=message.from_user.id, photo="https://tipik.ru/wp-content/uploads/2019/06/%D0%9F%D0%B8%D0%BD%D0%B3%D0%B2%D0%B8%D0%BD%D1%8B-%D0%BD%D0%B0-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9-%D1%81%D1%82%D0%BE%D0%BB-%D0%BE%D0%B1%D0%BE%D0%B8-%D1%84%D0%BE%D0%BD018.jpg")
+    await bot.send_photo(chat_id=message.from_user.id,
+                         photo="https://tipik.ru/wp-content/uploads/2019/06/"\
+                               "%D0%9F%D0%B8%D0%BD%D0%B3%D0%B2%D0%B8%D0%BD%D1%8B-"\
+                               "%D0%BD%D0%B0-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9"\
+                               "-%D1%81%D1%82%D0%BE%D0%BB-%D0%BE%D0%B1%D0%BE%D0%B8-%D1%84%D0%BE%D0%BD018.jpg"
+                         )
     await message.delete()
 
 
