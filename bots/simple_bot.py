@@ -79,7 +79,7 @@ async def echo_upper(message: types.Message):
 
 @dp.message_handler(content_types=["sticker"])
 async def send_sticker_id(message: types.Message):
-    await message.reply(message.sticker.file_id)
+    await message.reply(f"ID for your sticker: <em>{message.sticker.file_id}</em>", parse_mode="HTML")
     
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
