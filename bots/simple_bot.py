@@ -1,5 +1,6 @@
 # import logging
 from aiogram import Bot, Dispatcher, executor, types
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
 # from config import API_TOKEN, HELP_COMMANDS, ALPHABET, DESCRIPTION
 import config
 import random
@@ -8,6 +9,12 @@ import random
 
 bot = Bot(token=config.API_TOKEN)
 dp = Dispatcher(bot)
+
+kb = ReplyKeyboardMarkup(resize_keyboard=True)
+b1 = KeyboardButton("/random")
+b2 = KeyboardButton("/image")
+b3 = KeyboardButton("/count")
+kb.add(b1).insert(b2).add(b3)
 
 count = 1
 
@@ -18,7 +25,9 @@ async def on_startup(_):
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message=types.Message):
-    await message.answer(f"Hi, I'm <em>Echo BOT</em>!\n<b>Powered by aiogram.</b>", parse_mode="HTML")
+    await message.answer(f"Hi, I'm <em>Echo BOT</em>!\n<b>Powered by aiogram.</b>",
+                         parse_mode="HTML",
+                         reply_markup=kb)
     await message.answer(config.HELP_COMMANDS, parse_mode="HTML")
     await message.delete()
 
