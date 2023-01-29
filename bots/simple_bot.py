@@ -61,6 +61,14 @@ async def send_image(message: types.Message):
     await message.delete()
 
 
+@dp.message_handler(commands=["location"])
+async def send_point(message: types.Message):
+    await bot.send_location(chat_id=message.from_user.id,
+                            latitude=59.869132,
+                            longitude=29.855710)
+    await message.delete()
+
+
 @dp.message_handler()
 async def echo_upper(message: types.Message):
     counter = 0
@@ -88,4 +96,4 @@ async def send_sticker_id(message: types.Message):
     await message.reply(f"<b>ID for your sticker:</b> \n<em>{message.sticker.file_id}</em>", parse_mode="HTML")
     
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)  # Пропускать ответ на сообщения в оффлайне
