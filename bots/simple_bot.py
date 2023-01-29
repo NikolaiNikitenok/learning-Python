@@ -57,6 +57,12 @@ async def give_sticker(message: types.Message):
 
 @dp.message_handler()
 async def echo_upper(message: types.Message):
+    counter = 0
+    for i in message.text:
+        if i == "✅":
+            counter += 1
+
+    await message.reply(f"There are {counter} checkmarks in your message!!!")
 
     if message.text == "❤️":
         await message.reply("🖤")
