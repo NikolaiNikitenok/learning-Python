@@ -4,7 +4,7 @@ import os
 from doc2pdf import convert
 import shutil
 import random
-from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfMerger
 
 start = f'C:/Users/k8909/OneDrive/Документы/GitHub/learning-Python/for_me/Детское/'
 
@@ -25,11 +25,11 @@ for folder in os.listdir('C:/Users/k8909/OneDrive/Документы/GitHub/lear
         if filename.endswith(".pdf"):
             shutil.move(path + filename, n_path + filename)
 
-merger = PdfFileMerger()
+merger = PdfMerger()
 
 for filename in os.listdir(n_path):
     if filename.endswith(".pdf"):
-        merger.append(filename)
+        merger.append(n_path + filename)
 
-merger.write("output.pdf")
+merger.write(n_path + "output.pdf")
 merger.close()            
