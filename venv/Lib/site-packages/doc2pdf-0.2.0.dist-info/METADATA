@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: doc2pdf
+Version: 0.2.0
+Summary: A package to convert Doc files to PDF.
+Home-page: https://github.com/silasvasconcelos/doc2pdf
+License: MIT
+Keywords: doc2pdf,doc,pdf
+Author: Silas Vasconcelos
+Author-email: silasvasconcelos@hotmail.com.br
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Project-URL: Repository, https://github.com/silasvasconcelos/doc2pdf
+Description-Content-Type: text/markdown
+
+# Doc2PDF
+
+## Dependencies
+I recommend complete install libreoffice-writer, to minimize errors on convert.
+* Ubuntu/Debian
+```bash
+apt install libreoffice-writer -y
+```
+* Alpine
+```bash
+apk add libreoffice-writer
+```
+* Windows
+
+Download from https://www.libreoffice.org/download/download/

@@ -1,0 +1,3 @@
+[console_scripts]
+eseries = eseries.cli:main
+
